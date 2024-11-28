@@ -1,10 +1,41 @@
 @extends('frontend.layout.app')
+
 @section('content')
- <!-- Skills-->
- <section class="resume-section" id="skills">
+<!-- Skills-->
+<section class="resume-section" id="skills">
     <div class="resume-section-content">
-        <h2 class="mb-5">Skills</h2>
-        <div class="subheading mb-3">Programming Languages & Tools</div>
+         <!-- Tampilkann Judul -->        
+         <h1 class="mb-0">
+            <!--memanggil variable data di controoler -->
+            {{$t2}}
+        </h1>
+        <h1 class="subheading mb-3">
+            <!--memanggil variable data di controoler -->
+            {{$t2}}
+        </h1>
+
+         <!-- Menampilkan Data dari Array -->
+         <ul class="fa-ul mb-0">
+            @foreach ($data['head'] as $item)
+                <li><span class="fa-li"><i class="fas fa-check"></i></span> {{ $item['nama'] }} - {{ $item['divisi'] }}</li>
+                <!-- Menampilkan sub-item 'komputer' atau 'pajak' jika ada -->
+                @if(isset($item['komputer']))
+                    <ul>
+                        @foreach ($item['komputer'] as $komputer)
+                            <li><span class="fa-li"><i class="fas fa-laptop"></i></span> {{ $komputer }}</li>
+                        @endforeach
+                    </ul>
+                @elseif(isset($item['pajak']))
+                    <ul>
+                        @foreach ($item['pajak'] as $pajak)
+                            <li><span class="fa-li"><i class="fas fa-file-invoice-dollar"></i></span> {{ $pajak }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            @endforeach
+        </ul>
+
+        <p></p>
         <ul class="list-inline dev-icons">
             <li class="list-inline-item"><i class="fab fa-html5"></i></li>
             <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
@@ -19,28 +50,27 @@
             <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
             <li class="list-inline-item"><i class="fab fa-npm"></i></li>
         </ul>
-        <div class="subheading mb-3">Workflow</div>
+        <div class="subheading mb-3">Kami Bekerja Secara Proforsional</div>
         <ul class="fa-ul mb-0">
             <li>
                 <span class="fa-li"><i class="fas fa-check"></i></span>
-                Mobile-First, Responsive Design
+                Menjaga Kejujuran
             </li>
             <li>
                 <span class="fa-li"><i class="fas fa-check"></i></span>
-                Cross Browser Testing & Debugging
+                Berintegritas
             </li>
             <li>
                 <span class="fa-li"><i class="fas fa-check"></i></span>
-                Cross Functional Teams
+                Komitment Tinggi
             </li>
             <li>
                 <span class="fa-li"><i class="fas fa-check"></i></span>
-                Agile Development & Scrum
+                Cinta Kasih
             </li>
         </ul>
     </div>
 </section>
-<hr class="m-0" />
 @endsection
 
 @push('style')
@@ -48,5 +78,5 @@
 @endpush
 
 @push('script')
-    
+
 @endpush

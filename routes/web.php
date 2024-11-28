@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require_once('admin.php');
 //  Route::get('/about', function () {
 //      return view('about');
 // });
